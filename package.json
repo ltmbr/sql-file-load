@@ -1,0 +1,59 @@
+{
+  "name": "sql-file-load",
+  "version": "1.0.0",
+  "description": "This package is a simple SQL file loader",
+  "keywords": [
+    "sql",
+    "file",
+    "load",
+    "sql-load",
+    "sql-loader",
+    "sql-file-load"
+  ],
+  "type": "module",
+  "author": "Lucas Tiago de Moraes <lucastiagodemoraes@gmail.com>",
+  "exports": "./lib/load.js",
+  "types": "./lib/load.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltmbr/sql-file-load.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ltmbr/sql-file-load/issues"
+  },
+  "scripts": {
+    "build": "npx tsc --build ./",
+    "build:clean": "npm run clean && npm run build",
+    "build:coverage": "npm run build && npm run coverage",
+    "build:lint": "npm run build && npm run lint",
+    "build:node": "npm run build && node",
+    "build:test": "npm run build && npm test",
+    "build:watch": "npm run build -- --watch",
+    "clean": "rm -rf tsconfig.tsbuildinfo lib",
+    "coverage": "c8 tap --no-coverage test/*.js",
+    "coverage:ci": "c8 --reporter lcovonly tap --no-coverage test/*.js",
+    "lint": "eslint \"test/*.js\" \"src/*.ts\"",
+    "test": "tap --no-coverage test/*.js"
+  },
+  "dependencies": {
+    "glob": "^8.0.3"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/node": "^18.11.17",
+    "@types/tap": "^15.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.1",
+    "tap": "^16.3.2",
+    "typescript": "^4.9.4"
+  }
+}
