@@ -40,6 +40,8 @@
     "test": "tap --no-coverage test/*.js"
   },
   "dependencies": {
+    "camelcase": "^7.0.1",
+    "decamelize": "^6.0.0",
     "glob": "^8.0.3"
   },
   "devDependencies": {
