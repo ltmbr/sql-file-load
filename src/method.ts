@@ -1,5 +1,5 @@
+import type {list, MethodInterface} from './type.js';
 import {nameList} from './util.js';
-import {list, MethodInterface} from './types.js';
 
 export default function method(content: string): MethodInterface {
   return new Method(content);
@@ -19,48 +19,42 @@ class Method implements MethodInterface {
   }
 
   at(index: number): string | null {
-    if (index > 0 && this.list?.[--index] !== undefined)
-      return this.list[index];
+    if (index > 0 && this.list?.[--index] !== undefined) return this.list[index];
 
     return null;
   }
 
   default(): string | null {
-    if (this.hash.hasOwnProperty('default'))
-      return this.hash.default;
+    if (this.hash.hasOwnProperty.call('default')) return this.hash.default;
 
-    return this.first();  
+    return this.first();
   }
 
   first(): string | null {
-    if (this.list?.[0] !== undefined)
-      return this.list[0];    
+    if (this.list?.[0] !== undefined) return this.list[0];
 
     return null;
   }
 
   last(): string | null {
-    if (this.list.slice(-1)[0] !== undefined)
-      return this.list.slice(-1)[0];     
+    if (this.list.slice(-1)[0] !== undefined) return this.list.slice(-1)[0];
 
     return null;
   }
 
   name(name: string): string | null {
-    const real = this.keys.hasOwnProperty(name) ? this.keys[name] : name;
+    const real = Object.prototype.hasOwnProperty.call(this.keys, name) ? this.keys[name] : name;
 
-    if (this.hash.hasOwnProperty(real))
-      return this.hash[real];
+    if (Object.prototype.hasOwnProperty.call(this.hash, real)) return this.hash[real];
 
-    return null; 
+    return null;
   }
 
   next(): string | null {
     if (this.sqlNext !== undefined) {
       const next = this.sqlNext++;
 
-      if (this.list?.[next] !== undefined)
-        return this.list[next];
+      if (this.list?.[next] !== undefined) return this.list[next];
 
       this.sqlNext = undefined;
     }
@@ -75,7 +69,7 @@ class Method implements MethodInterface {
     for (const index in match) {
       const data = match[Number(index)];
       const query = data.match(/--\s*(?:#|\[|\()\s*([\w-]+)\s*(?:|]|\))\n([^;]+;)/);
-      
+
       if (query) {
         const name = query[1];
         const sql = query[2];
@@ -90,7 +84,7 @@ class Method implements MethodInterface {
 
     if (this.data.length == 0) {
       this.data.push('default');
-      this.data.push(this.content.trim());      
+      this.data.push(this.content.trim());
     }
 
     for (let i = 0; i < this.data.length; i += 2) {
@@ -98,14 +92,13 @@ class Method implements MethodInterface {
       const value = this.data[i + 1];
 
       // set hash
-      this.hash[key] = value;   
-      
+      this.hash[key] = value;
+
       // get name list
       const names: list = nameList(key);
 
       // set keys
-      for (const name of names)
-        this.keys[name] = key;
+      for (const name of names) this.keys[name] = key;
 
       // set list
       this.list.push(value);

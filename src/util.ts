@@ -1,7 +1,7 @@
+import type {list} from './type.js';
 import {existsSync, lstatSync, readFileSync} from 'node:fs';
 import camelCase from 'camelcase';
 import decamelize from 'decamelize';
-import {list} from './types';
 
 export async function findFile(nameList: list) {
   let file_name;
@@ -17,22 +17,17 @@ export async function findFile(nameList: list) {
   return file_name;
 }
 
-export function generateKey(max: number = 16) {
-  const array = [
-    ...genCharArray('a', 'z'),
-    ...genCharArray('A', 'Z'),
-    ...genCharArray('0', '9')
-  ];
+export function generateKey(max: number) {
+  const array = [...genCharArray('a', 'z'), ...genCharArray('A', 'Z'), ...genCharArray('0', '9')];
 
   const total = array.length;
 
   let key = '';
 
-  for (let i = 0; i < max; i++)
-    key += array[randomInt(total)];
+  for (let i = 0; i < (max || 16); i++) key += array[randomInt(total)];
 
   return key;
-} 
+}
 
 export async function loadFile(fileName: string) {
   if (lstatSync(fileName.toString()).isFile()) {
@@ -45,7 +40,7 @@ export async function loadFile(fileName: string) {
   }
 }
 
-export function nameList(name: string): list{
+export function nameList(name: string): list {
   name = removeExtension(name);
 
   const list: list = [];
@@ -73,33 +68,29 @@ function randomInt(max: number): number {
 }
 
 function genCharArray(char1: string, char2: string) {
-  let a = [], 
-      i = char1.charCodeAt(0), 
-      j = char2.charCodeAt(0);
+  let i = char1.charCodeAt(0);
+  const j = char2.charCodeAt(0);
+  const a = [];
 
-  for (; i <= j; ++i)
-    a.push(String.fromCharCode(i));
+  for (; i <= j; ++i) a.push(String.fromCharCode(i));
 
   return a;
 }
 
 function camelCaseList(data: list): list {
-  for (let i = 0; i < data.length; i++)
-    data[i] = camelCase(data[i], {pascalCase: true});
+  for (let i = 0; i < data.length; i++) data[i] = camelCase(data[i], {pascalCase: true});
 
   return data;
 }
 
-function snakeCaseList(data: list): list{
-  for (let i = 0; i < data.length; i++)
-    data[i] = decamelize(data[i], {separator: '_'});
+function snakeCaseList(data: list): list {
+  for (let i = 0; i < data.length; i++) data[i] = decamelize(data[i], {separator: '_'});
 
   return data;
 }
 
 function kebabCaseList(data: list): list {
-  for (let i = 0; i < data.length; i++)
-    data[i] = data[i].replaceAll('_', '-');
-  
+  for (let i = 0; i < data.length; i++) data[i] = data[i].replaceAll('_', '-');
+
   return data;
 }
