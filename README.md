@@ -1,4 +1,4 @@
-# mojo-plugin-route
+# sql-file-load
 
 This package is a simple SQL file loader.
 
