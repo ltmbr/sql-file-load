@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "npx tsc --build ./",
+    "prepublish": "npm run build",
     "build:clean": "npm run clean && npm run build",
     "build:coverage": "npm run build && npm run coverage",
     "build:lint": "npm run build && npm run lint",
