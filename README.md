@@ -65,7 +65,20 @@ Load the content in the reference and return an instance of class Method.
 ### at
 
 ```ts
-const sql = method.at('1');
+
+/*
+SELECT * FROM admin;
+
+UPDATE admin SET name = ? WHERE id = ?;
+
+DELETE FROM admin WHERE id = ?;
+*/
+
+const sql = method.at('1'); // SELECT * FROM admin;
+
+const sql = method.at('2'); // UPDATE admin SET name = ? WHERE id = ?;
+
+const sql = method.at('3'); // DELETE FROM admin WHERE id = ?;
 ```
 
 Returns the SQL by position in the list, starting with 1.
