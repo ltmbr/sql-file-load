@@ -2,7 +2,7 @@ import path from '../lib/load.js';
 import t from 'tap';
 
 t.test('Load', async t => {
-  const sqlPath = await path('test/sql');
+  const sqlPath = path('test/sql');
 
   await t.test('load', async () => {
     const file1 = await sqlPath.load('users');
