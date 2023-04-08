@@ -46,7 +46,7 @@ npm install sql-file-load
 
 ## Version
 
-1.1.3
+1.1.4
 
 ## Methods
 
@@ -58,7 +58,7 @@ const method: any = await sqlPath.load('file-name.sql');
 const sql = await sqlPath.load('file-name#sql-name'); // when passed the name returns the SQL
 ```
 
-Load the content in the reference and return an instance of class Method.
+Load the content in the reference and return an instance of class FileMethod.
 
 # Class FileMethod
 
@@ -142,7 +142,7 @@ Lucas Tiago de Moraes
 
 ## Copyright
 
-(c) Lucas Tiago de Moraes 2022
+(c) Lucas Tiago de Moraes 2022 - 2023
 
 ## License
 

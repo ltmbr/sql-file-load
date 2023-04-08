@@ -2,6 +2,10 @@
 
 This package strictly follows [Semantic Versioning](https://semver.org).
 
+## v1.1.4 (2023-04-08)
+
+Solved some details in the documentation.
+
 ## v1.1.3 (2023-04-08)
 
 Added files d.ts.
