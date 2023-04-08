@@ -70,6 +70,14 @@ const sql = method.at('1');
 
 Returns the SQL by position in the list, starting with 1.
 
+### default
+
+```ts
+const sql = method.default();
+```
+
+Returns the first SQL or SQL named as default.
+
 ## Author
 
 Lucas Tiago de Moraes
