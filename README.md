@@ -2,7 +2,9 @@
 
 This package is a simple SQL file loader.
 
-file: /var/www/sql/users.sql
+## Synopsis
+
+File: /var/www/sql/users.sql
 
 ```sql
 -- (find)
@@ -44,7 +46,7 @@ npm install sql-file-load
 
 ## Version
 
-1.1.1
+1.1.3
 
 ## Methods
 
@@ -74,11 +76,11 @@ UPDATE admin SET name = ? WHERE id = ?;
 DELETE FROM admin WHERE id = ?;
 */
 
-const sql = method.at('1'); // SELECT * FROM admin;
+const sql = method.at(1); // SELECT * FROM admin;
 
-const sql = method.at('2'); // UPDATE admin SET name = ? WHERE id = ?;
+const sql = method.at(2); // UPDATE admin SET name = ? WHERE id = ?;
 
-const sql = method.at('3'); // DELETE FROM admin WHERE id = ?;
+const sql = method.at(3); // DELETE FROM admin WHERE id = ?;
 ```
 
 Returns the SQL by position in the list, starting with 1.
