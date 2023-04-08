@@ -122,6 +122,18 @@ const sql = method.name('name');
 
 Returns SQL by name.
 
+### next
+
+```ts
+let currentSql;
+
+while ((currentSql = method.next()) !== null) {
+  console.log(currentSql);
+}
+```
+
+Returns the next SQL like an iterator.
+
 ## Author
 
 Lucas Tiago de Moraes
