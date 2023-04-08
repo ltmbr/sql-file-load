@@ -78,6 +78,22 @@ const sql = method.default();
 
 Returns the first SQL or SQL named as default.
 
+### first
+
+```ts
+const sql = method.first();
+```
+
+Returns first the SQL.
+
+### last
+
+```ts
+const sql = method.last();
+```
+
+Returns last the SQL.
+
 ## Author
 
 Lucas Tiago de Moraes
