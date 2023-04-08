@@ -94,6 +94,21 @@ const sql = method.last();
 
 Returns last the SQL.
 
+### name
+
+```ts
+/*
+Three formats to define a name
+-- # name
+-- [name]
+-- (name)
+*/
+
+const sql = method.name('name');
+```
+
+Returns SQL by name.
+
 ## Author
 
 Lucas Tiago de Moraes
