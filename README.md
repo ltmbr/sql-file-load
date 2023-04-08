@@ -25,9 +25,9 @@ const sqlPath = path('/var/www/sql');
 // load users.sql file
 const users = await sqlPath.load('users');
   
-const find = users.name('find');     // SELECT * FROM users WHERE id = ?;
+const find = users.name('find');        // SELECT * FROM users WHERE id = ?;
 const findAll = users.name('find-all'); // SELECT * FROM users ORDER BY id DESC;
-const insert = users.name('insert');   // INSERT INTO users (name, login, password) VALUES (?, ?, ?);
+const insert = users.name('insert');    // INSERT INTO users (name, login, password) VALUES (?, ?, ?);
 
 // or
 
@@ -45,6 +45,18 @@ npm install sql-file-load
 ## Version
 
 1.0.0
+
+## Methods
+
+### load
+
+```ts
+const method = sqlPath.load('file-name'); 
+const method = sqlPath.load('file-name.sql');
+const sql = sqlPath.load('file-name#sql-name'); // when passed the name returns the SQL
+```
+
+Load the content in the reference and return an instance of class Method.
 
 ## Author
 
