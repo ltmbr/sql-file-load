@@ -1,6 +1,6 @@
-import type {list, MethodInterface} from './type.js';
+import type {list, method} from './type.js';
 import {existsSync} from 'node:fs';
-import method from './method.js';
+import fileMethod from './method.js';
 import {findFile, nameList, loadFile, removeExtension} from './util.js';
 
 export default function path(path: string) {
@@ -18,7 +18,7 @@ class LoadPath {
     this.path = path.replace(/\/$/, '');
   }
 
-  async load(fileName: string) {
+  async load(fileName: string): Promise<string | method | null> {
     let name: string | null = null;
 
     const parts = fileName.split('#');
@@ -30,23 +30,22 @@ class LoadPath {
       fileName = removeExtension(fileName);
     }
 
-    // eslint-disable-next-line
-    if (fileName && /^[\w\-\/]+$/.test(fileName)) {
-      const names: list = nameList(`${this.path}/${fileName}`);
+    if (!fileName || /^\s+$/.test(fileName)) throw Error(`The file name is empty!`);
 
-      const file = await findFile(names);
+    const names: list = nameList(`${this.path}/${fileName}`);
 
-      if (file === undefined) throw Error(`The ${fileName} file does not exist!`);
+    const file = await findFile(names);
 
-      const content = await loadFile(file);
+    if (file === undefined) throw Error(`The ${fileName} file does not exist!`);
 
-      if (content === undefined) throw Error(`The ${file} file has no content!`);
+    const content = await loadFile(file);
 
-      const loadMethod: MethodInterface = method(content);
+    if (content === undefined) throw Error(`The ${file} file has no content!`);
 
-      if (name && loadMethod.name(name)) return loadMethod.name(name);
+    const loadMethod: method = fileMethod(content);
 
-      return loadMethod;
-    }
+    if (name && loadMethod.name(name)) return loadMethod.name(name);
+
+    return loadMethod;
   }
 }

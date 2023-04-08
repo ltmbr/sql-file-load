@@ -1,6 +1,6 @@
 export type list = Array<string>;
 
-export interface MethodInterface {
+export interface method {
   at(index: number): string | null;
   default(): string | null;
   first(): string | null;

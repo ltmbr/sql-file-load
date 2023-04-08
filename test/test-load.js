@@ -8,7 +8,7 @@ t.test('Load', async t => {
     const file1 = await sqlPath.load('users');
 
     t.type(file1, 'Object');
-    t.type(file1, 'Method');
+    t.type(file1, 'FileMethod');
 
     try {
       await sqlPath.load('foo');

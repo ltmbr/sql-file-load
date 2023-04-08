@@ -1,11 +1,11 @@
-import type {list, MethodInterface} from './type.js';
+import type {list, method} from './type.js';
 import {nameList} from './util.js';
 
-export default function method(content: string): MethodInterface {
-  return new Method(content);
+export default function fileMethod(content: string): method {
+  return new FileMethod(content);
 }
 
-class Method implements MethodInterface {
+class FileMethod implements method {
   private content: string;
   private data: Array<string> = [];
   private list: Array<string> = [];
