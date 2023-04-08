@@ -58,6 +58,18 @@ const sql = sqlPath.load('file-name#sql-name'); // when passed the name returns 
 
 Load the content in the reference and return an instance of class Method.
 
+# Class Method
+
+## Methods
+
+### at
+
+```ts
+const sql = method.at('1');
+```
+
+Returns the SQL by position in the list, starting with 1.
+
 ## Author
 
 Lucas Tiago de Moraes
